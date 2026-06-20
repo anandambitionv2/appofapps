@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginxdemos-hello
+  name: sap-prod
   namespace: sap-prod-ns
   labels:
-    app: nginxdemos-hello
+    app: sap-prod
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: nginxdemos-hello
+      app: sap-prod
   template:
     metadata:
       labels:
-        app: nginxdemos-hello
+        app: sap-prod
     spec:
       containers:
-      - name: nginxdemos-hello
+      - name: sap-prod
         image: nginxdemos/hello:latest
         ports:
         - containerPort: 80
