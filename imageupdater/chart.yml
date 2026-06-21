@@ -6,6 +6,6 @@ version: 1.0.0
 
 # This replaces copy-pasting the official chart files!
 dependencies:
-  - name: argocd-apps
+  - name: argocd-image-updater
     version: 2.0.0  # Or whatever version matches your ArgoCD setup
     repository: https://argoproj.github.io/argo-helm
