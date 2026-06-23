@@ -12,5 +12,7 @@ spec:
 
       writeBackConfig:
         method: git
+        
         gitConfig:
-          branch: "main:image-updater{{range .Images}}-{{.Name}}-{{.NewTag}}{{end}}"
+          writebacktarget: "kustomization"
+          branch: "main:image-updater"
