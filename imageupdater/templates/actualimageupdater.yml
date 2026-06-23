@@ -15,4 +15,3 @@ spec:
         
         gitConfig:
           writeBackTarget: "kustomization"
-          branch: "image-updater-{{range .Images}}{{.Alias}}-{{.NewTag}}{{end}}"
