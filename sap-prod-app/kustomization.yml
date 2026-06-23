@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - sap.yml
   - ns.yml
-  
 images:
   - name: acrargotest.azurecr.io/frontend
-    newTag: "2173"
+    newTag: "2178"
