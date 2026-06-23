@@ -1,53 +1,54 @@
 # values.yaml
-serviceAccount:
-  create: true
-  name: argocd-image-updater-svc
-  namespace: argocd
-  annotations:
-    azure.workload.identity/client-id: "ea382872-25ed-4946-92f6-a95ccdec4cbe"
+argocd-image-updater:
+  serviceAccount:
+    create: true
+    name: argocd-image-updater-svc
+    namespace: argocd
+    annotations:
+      azure.workload.identity/client-id: "ea382872-25ed-4946-92f6-a95ccdec4cbe"
 
-podLabels:
-  azure.workload.identity/use: "true"
+  podLabels:
+    azure.workload.identity/use: "true"
 
-# Argo CD Image Updater config
-config:
-  registries:
-    - name: acr
-      prefix: acrargotest.azurecr.io
-      api_url: https://acrargotest.azurecr.io
-      # Uses external auth script for Workload Identity
-      credentials: ext:/scripts/acr-login.sh
+  # Argo CD Image Updater config
+  config:
+    registries:
+      - name: acr
+        prefix: acrargotest.azurecr.io
+        api_url: https://acrargotest.azurecr.io
+        # Uses external auth script for Workload Identity
+        credentials: ext:/scripts/acr-login.sh 
 
-# Enable auth scripts
-authScripts:
-  enabled: true
-  scripts:
-    acr-login.sh: |
-      #!/bin/sh
+  # Enable auth scripts
+  authScripts:
+    enabled: true
+    scripts:
+      acr-login.sh: |
+        #!/bin/sh
 
-      set -eo pipefail
+        set -eo pipefail
 
-      AAD_ACCESS_TOKEN=$(cat $AZURE_FEDERATED_TOKEN_FILE)
+        AAD_ACCESS_TOKEN=$(cat $AZURE_FEDERATED_TOKEN_FILE)
 
-      ACCESS_TOKEN=$(wget --output-document - --header "Content-Type: application/x-www-form-urlencoded" \
-      --post-data="grant_type=client_credentials&client_id=${AZURE_CLIENT_ID}&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&scope=https://management.azure.com/.default&client_assertion=${AAD_ACCESS_TOKEN}" \
-      https://login.microsoftonline.com/${AZURE_TENANT_ID}/oauth2/v2.0/token \
-      | python3 -c "import sys, json; print(json.load(sys.stdin)['access_token'])")
+        ACCESS_TOKEN=$(wget --output-document - --header "Content-Type: application/x-www-form-urlencoded" \
+        --post-data="grant_type=client_credentials&client_id=${AZURE_CLIENT_ID}&client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&scope=https://management.azure.com/.default&client_assertion=${AAD_ACCESS_TOKEN}" \
+        https://login.microsoftonline.com/${AZURE_TENANT_ID}/oauth2/v2.0/token \
+        | python3 -c "import sys, json; print(json.load(sys.stdin)['access_token'])")
 
-      ACR_REFRESH_TOKEN=$(wget --quiet --header="Content-Type: application/x-www-form-urlencoded" \
-      --post-data="grant_type=access_token&service=acrargotest.azurecr.io&access_token=${ACCESS_TOKEN}" \
-      --output-document - \
-      "https://acrargotest.azurecr.io/oauth2/exchange" |
-      python3 -c "import sys, json; print(json.load(sys.stdin)['refresh_token'])")
+        ACR_REFRESH_TOKEN=$(wget --quiet --header="Content-Type: application/x-www-form-urlencoded" \
+        --post-data="grant_type=access_token&service=acrargotest.azurecr.io&access_token=${ACCESS_TOKEN}" \
+        --output-document - \
+        "https://acrargotest.azurecr.io/oauth2/exchange" |
+        python3 -c "import sys, json; print(json.load(sys.stdin)['refresh_token'])")
 
-      echo "00000000-0000-0000-0000-000000000000:$ACR_REFRESH_TOKEN"
+        echo "00000000-0000-0000-0000-000000000000:$ACR_REFRESH_TOKEN"
 
-# Git commit credentials for write-back
-# git:
-#   username: "<git-username-or-bot>"
-#   password: "<git-personal-access-token>"
+  # Git commit credentials for write-back
+  # git:
+  #   username: "<git-username-or-bot>"
+  #   password: "<git-personal-access-token>"
 
-# Optional: RBAC for Image Updater
-rbac:
-  create: true
+  # Optional: RBAC for Image Updater
+  rbac:
+    create: true
 
