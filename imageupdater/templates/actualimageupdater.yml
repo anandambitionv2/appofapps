@@ -14,5 +14,5 @@ spec:
         method: git
         
         gitConfig:
-          writebacktarget: "kustomization"
+          writeBackTarget: "kustomization"
           branch: "main:image-updater"
