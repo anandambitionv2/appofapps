@@ -15,4 +15,4 @@ spec:
         
         gitConfig:
           writeBackTarget: "kustomization"
-          branch: "main:image-updater-{{ .BranchName }}"
+          branch: "main:image"
