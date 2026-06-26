@@ -40,6 +40,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: rollout-sap-prod-app-active
+  namespace: sap-prod-ns
 
 spec:
   type: LoadBalancer
@@ -56,6 +57,7 @@ kind: Service
 apiVersion: v1
 metadata:
   name: rollout-sap-prod-app-preview
+  namespace: sap-prod-ns
 spec:
   type: LoadBalancer
   selector:
