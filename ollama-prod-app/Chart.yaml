@@ -8,4 +8,4 @@ version: 1.0.0
 dependencies:
   - name: ollama
     version: latest 
-    repository: https://github.com/otwld/ollama-helm
+    repository: https://otwld.github.io/ollama-helm/
