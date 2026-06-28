@@ -1,0 +1,18 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: my-image-updater-2
+  namespace: argocd
+spec:
+  applicationRefs:
+    - namePattern: "rollout-sap-prod-argocd-app"
+      images:
+        - alias: frontend
+          imageName: acrargotest.azurecr.io/frontend
+
+      writeBackConfig:
+        method: git
+        
+        gitConfig:
+          writeBackTarget: "kustomization"
+          branch: "main:image-updater{{range .Images}}-{{.Name}}-{{.NewTag}}{{end}}"
