@@ -1,0 +1,11 @@
+apiVersion: v2
+name: my-ollama
+description: Parent chart to manage ollama
+type: application
+version: 1.0.0
+
+# This replaces copy-pasting the official chart files!
+dependencies:
+  - name: ollama
+    version: latest 
+    repository: https://github.com/otwld/ollama-helm

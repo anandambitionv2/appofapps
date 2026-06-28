@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ollama-prod-argocd-app
+  namespace: argocd
+  
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/anandambitionv2/appofapps.git
+    targetRevision: main
+    path: ollama-prod-app
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: ollama-ns
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
