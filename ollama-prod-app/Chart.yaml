@@ -7,5 +7,5 @@ version: 1.0.0
 # This replaces copy-pasting the official chart files!
 dependencies:
   - name: ollama
-    version:  
+    version:  1.64.0
     repository: https://helm.otwld.com/
