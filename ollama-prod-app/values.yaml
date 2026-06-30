@@ -1,7 +1,7 @@
 ollama:
   fullnameOverride: "blabla"
   nodeSelector:
-  agentpool: sixteengbram
+   agentpool: sixteengbram
 
   gpu:
     enabled: false
