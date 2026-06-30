@@ -1,5 +1,7 @@
 ollama:
   fullnameOverride: "blabla"
+  nodeSelector:
+  agentpool: sixteengbram
 
   gpu:
     enabled: false
@@ -9,5 +11,3 @@ ollama:
       - mistral
       - llama2
 
-nodeSelector:
-  agentpool: sixteengbram
