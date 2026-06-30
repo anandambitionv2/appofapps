@@ -1,4 +1,4 @@
-nameOverride: "blabla"
+fullnameOverride: "blabla"
 ollama:
   gpu:
     # -- Enable GPU integration
