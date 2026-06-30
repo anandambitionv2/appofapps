@@ -10,4 +10,4 @@ ollama:
       - llama2
 
 nodeSelector:
-  workload: sixteengbram
+  agentpool: sixteengbram
