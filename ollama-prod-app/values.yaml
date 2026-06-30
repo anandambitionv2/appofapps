@@ -1,5 +1,4 @@
 ollama:
-  nodeSelector: "sixteengbram"
   fullnameOverride: "blabla"
 
   gpu:
@@ -9,3 +8,6 @@ ollama:
     pull:
       - mistral
       - llama2
+
+nodeSelector:
+  workload: sixteengbram
