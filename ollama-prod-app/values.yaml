@@ -1,4 +1,5 @@
 ollama:
+  nodeSelector: "sixteengbram"
   fullnameOverride: "blabla"
 
   gpu:
