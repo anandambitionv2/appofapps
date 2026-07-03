@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argo-secret
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/anandambitionv2/appofapps.git
+    targetRevision: main
+    path: external-cluster-deploy
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
