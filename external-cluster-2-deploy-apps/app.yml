@@ -1,20 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: tt1
-  namespace: default
+  name: external-2-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: tt1
+      app: external-2-app
   template:
     metadata:
       labels:
-        app: tt1
+        app: external-2-app
     spec:
-      nodeSelector:
-       
+      
 
       containers:
       - name: nginx

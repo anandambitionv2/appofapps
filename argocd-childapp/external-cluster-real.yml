@@ -1,16 +1,16 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-cluster-deploy
+  name: external-cluster-deploy-2
   namespace: argocd
 spec:
   project: default
   source:
     repoURL: https://github.com/anandambitionv2/appofapps.git
     targetRevision: main
-    path: external-cluster-deploy
+    path: external-cluster-2-deploy-apps
   destination:
-    server: https://aks-private-dns-wed6ccoz.93d20030-3b00-4387-a693-029b5f8ae794.privatelink.centralindia.azmk8s.io
+    server: https://aaks-private-pure-dns-trfujra4.0dc1235a-43f4-461a-a82d-52d64bb02521.privatelink.centralindia.azmk8s.io
     # namespace: argocd
   syncPolicy:
     automated:
