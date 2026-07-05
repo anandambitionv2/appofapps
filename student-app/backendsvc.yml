@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: student-backend-svc
+  namespace: default
+
+spec:
+  type: LoadBalancer
+  selector:
+    app: student-backend
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 5000

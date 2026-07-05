@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-backend
+  namespace: default
+  labels:
+    app: student-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: student-backend
+  template:
+    metadata:
+      labels:
+        app: student-backend
+    spec:
+      containers:
+      - name: student1
+        image: acrwinter.azurecr.io/backend:latest
+        ports:
+        - containerPort: 5000
