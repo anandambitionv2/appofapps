@@ -20,3 +20,15 @@ spec:
         image: acrwinter.azurecr.io/backend:latest
         ports:
         - containerPort: 5000
+        env:
+        - name: DB_SERVER
+          value: sqlforstudents.database.windows.net
+
+        - name: DB_NAME
+          value: SchoolDB
+
+        - name: DB_USER
+          value: sqluser112
+
+        - name: DB_PASSWORD
+          value: Atlanta@445
