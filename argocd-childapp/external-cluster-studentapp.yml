@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-cluster-studentapp
+  name: external-cluster-studentapp-1
   namespace: argocd
 spec:
   project: default
