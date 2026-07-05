@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: external-3-app
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: external-3-app
+  template:
+    metadata:
+      labels:
+        app: external-3-app
+    spec:
+      
+
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+
+        
+        
