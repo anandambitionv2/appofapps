@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-frontend
+  namespace: default
+  labels:
+    app: student-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: student-frontend
+  template:
+    metadata:
+      labels:
+        app: student-frontend
+    spec:
+      containers:
+      - name: student1
+        image: acrwinter.azurecr.io/frontend:latest
+        ports:
+        - containerPort: 80
