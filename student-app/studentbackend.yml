@@ -20,9 +20,14 @@ spec:
         image: acrwinter.azurecr.io/backend:latest
         ports:
         - containerPort: 5000
+        volumeMounts:
+        - name: secrets-store-1
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+
         env:
         - name: DB_SERVER
-          value: sqlforstudents.database.windows.net
+          value: 
 
         - name: DB_NAME
           value: SchoolDB
@@ -32,3 +37,11 @@ spec:
 
         - name: DB_PASSWORD
           value: Atlanta@445
+
+      volumes:
+        - name: secrets-store-1
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: azure-mysecretkv-spc

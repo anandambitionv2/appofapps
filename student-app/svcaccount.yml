@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    azure.workload.identity/client-id: 74f29324-d303-4ac7-b00a-b319f6c7d4dd
+  name: kv-sa
+  namespace: default
