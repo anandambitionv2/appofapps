@@ -37,8 +37,8 @@ spec:
         - name: DB_USER
           value: sqluser112
 
-        - name: DB_PASSWORD
-          value: Atlanta@445
+        # - name: DB_PASSWORD
+        #   value: Atlanta@445
 
       volumes:
         - name: secrets-store-1
