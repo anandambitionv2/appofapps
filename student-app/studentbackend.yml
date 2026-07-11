@@ -36,6 +36,8 @@ spec:
 
         - name: AZURE_CLIENT_ID
           value: 920cc0de-b967-4a50-958c-8a9d0fa2aedc
+        - name: AZURE_CLIENT_SECRET
+          value: test
 
         # - name: DB_PASSWORD
         #   value: Atlanta@44
