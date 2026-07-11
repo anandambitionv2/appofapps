@@ -40,6 +40,8 @@ spec:
           value: d268Q~gW0r~OraodWt1YeMntnKaGbOHOMwIYVcBc
         - name: AZURE_TENANT_ID
           value: 5f8d3f88-8e5b-4e25-9d00-e62229c9cc71
+        - name: tt
+          value: tt
 
         # - name: DB_PASSWORD
         #   value: Atlanta@44
