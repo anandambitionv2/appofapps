@@ -27,7 +27,7 @@ spec:
           mountPath: "/mnt/secrets-store"
           readOnly: true
 
-        # env:
+        env:
         # - name: DB_SERVER
         #   value: sqlforstudents.database.windows.net
 
