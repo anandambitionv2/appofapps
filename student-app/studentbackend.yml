@@ -28,8 +28,8 @@ spec:
           readOnly: true
 
         env:
-        # - name: DB_SERVER
-        #   value: sqlforstudents.database.windows.net
+        - name: DB_SERVER
+          value: sqlforstudents.database.windows.net
 
         # - name: DB_NAME
         #   value: SchoolDB
