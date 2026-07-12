@@ -35,7 +35,7 @@ spec:
         #   value: SchoolDB
 
         - name: AZURE_CLIENT_ID
-          value: 3cef3013-81b2-4411-bfde-70f9f9ec2469
+          value: 920cc0de-b967-4a50-958c-8a9d0fa2aedc
         - name: AZURE_CLIENT_SECRET
           value: d268Q~gW0r~OraodWt1YeMntnKaGbOHOMwIYVcBc
         - name: AZURE_TENANT_ID
