@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tt1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tt1
+  template:
+    metadata:
+      labels:
+        app: tt1
+    spec:
+      nodeSelector:
+        agentpool: agentpool
+
+      containers:
+      - name: nginx
+        image: nginxdemos/hello
+
+        
+        

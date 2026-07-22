@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: private-k8s-cluster-argocd-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/anandambitionv2/appofapps.git
+    targetRevision: main
+    path: private-k8s-cluster-customer-app
+  destination:
+    server: https://aks-cluster-private-2-dns-f1due4ay.0dd60976-e318-4560-b69d-69b1445876e0.privatelink.centralindia.azmk8s.io
+    # namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
